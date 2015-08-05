@@ -19,6 +19,12 @@ get '/?' do
   erb :index
 end
 
+get '/item/:id' do
+  @items = Item.all(:id => params['id'])
+  redirect '/new' if @items.empty?
+  erb :index
+end
+
 get '/new/?' do
   @title = "Add todo item"
   erb :new
