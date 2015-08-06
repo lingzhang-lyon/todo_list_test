@@ -2,6 +2,13 @@ require 'rubygems'
 require 'sinatra'
 require 'data_mapper'
 require 'json'
+require "sinatra/cross_origin"
+
+set :bind, '0.0.0.0'
+
+configure do
+  enable :cross_origin
+end
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/todo_list.db")
 class Item
